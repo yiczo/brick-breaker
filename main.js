@@ -1,16 +1,24 @@
+var loadLevel = function(n) {
+	n = n - 1
+	var level = levels[n]
+	var blocks = []
+	for (var i = 0; i < level.length; i++) {
+		var p = level[i]
+		var b = Block()
+		b.x = p[0]
+		b.y = p[1]
+		blocks.push(b)
+	}
+	return blocks
+}
+
 var __main = function() {
-	var game = Game(60)
+	var game = Game()
 
 	var paddle = Paddle()
 	var ball = Ball()
 	
-	var blocks = []
-	for (var i = 0; i < 3; i++) {
-		var b = Block()
-		b.x = i * 150
-		b.y = 50
-		blocks.push(b)
-	}
+	var blocks = loadLevel(1)
 
 	game.registerAction('a', function() {
 		paddle.moveLeft()
@@ -22,15 +30,30 @@ var __main = function() {
 		ball.fire()
 	})
 
-	var paused = false
-	window.addEventListener('keydown', function(event) {
-		if (event.key == 'p') {
-			paused = !paused
-		}
-	})
+	var enableDebugMode = true
+	window.paused = false
+	if (enableDebugMode) {
+		window.addEventListener('keydown', function(event) {
+			if (event.key == 'p') {
+				window.paused = !window.paused
+			}
+		})
+		window.addEventListener('keydown', function(event) {
+			var k = event.key
+			if ('12'.includes(k)) {
+				blocks = loadLevel(Number(k))
+			}
+		})
+		// control speed
+		document.querySelector('#id-input-speed').hidden = false
+		document.querySelector('#id-input-speed').addEventListener('input', function() {
+			var input = event.target
+			window.fps = input.value
+		})
+	}
 
 	game.update = function() {
-		if (paused) {
+		if (window.paused) {
 			return
 		}
 		ball.move()
