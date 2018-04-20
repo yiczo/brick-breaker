@@ -22,9 +22,3 @@ var collide = function(o1, o2) {
 	}
 	return false
 }
-
-var imageFromPath = function(path) {
-	var img = new Image()
-	img.src = path
-	return img
-}

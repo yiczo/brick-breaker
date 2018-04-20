@@ -30,7 +30,7 @@ var __main = function() {
 		ball.fire()
 	})
 
-	var enableDebugMode = true
+	var enableDebugMode = false
 	window.paused = false
 	if (enableDebugMode) {
 		window.addEventListener('keydown', function(event) {
@@ -46,7 +46,7 @@ var __main = function() {
 		})
 		// control speed
 		document.querySelector('#id-input-speed').hidden = false
-		document.querySelector('#id-input-speed').addEventListener('input', function() {
+		document.querySelector('#id-input-speed').addEventListener('input', function(event) {
 			var input = event.target
 			window.fps = input.value
 		})
@@ -84,4 +84,12 @@ var __main = function() {
 	}
 }
 
-__main()
+var images = {
+	ball: 'ball.png',
+	block: 'block.png',
+	paddle: 'paddle.png',
+}
+
+loadImages(images, function() {
+	__main()
+})

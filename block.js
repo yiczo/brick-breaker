@@ -1,5 +1,6 @@
 var Block = function() {
-	var image = imageFromPath('block.png')
+	// var image = imageFromPath('block.png')
+	var image = imageFromName('block')
 	var o = {
 		image: image,
 		x: 100,
