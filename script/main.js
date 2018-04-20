@@ -85,9 +85,9 @@ var __main = function() {
 }
 
 var images = {
-	ball: 'ball.png',
-	block: 'block.png',
-	paddle: 'paddle.png',
+	ball: 'image/ball.png',
+	block: 'image/block.png',
+	paddle: 'image/paddle.png',
 }
 
 loadImages(images, function() {
