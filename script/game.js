@@ -1,5 +1,6 @@
 var Game = function() {
 	var g = {
+		scene: null,
 		actions: {},
 		keydowns: {},
 		paused: false,
@@ -24,7 +25,18 @@ var Game = function() {
 	}
 
 	g.update = function() {
-		
+		if (window.paused) {
+			return
+		}
+		g.scene.update()
+	}
+
+	g.draw = function() {
+		g.scene.draw()
+	}
+
+	g.replaceScene = function(scene) {
+		g.scene = scene
 	}
 
 	window.fps = 60
