@@ -30,28 +30,6 @@ var __main = function() {
 		ball.fire()
 	})
 
-	var enableDebugMode = false
-	window.paused = false
-	if (enableDebugMode) {
-		window.addEventListener('keydown', function(event) {
-			if (event.key == 'p') {
-				window.paused = !window.paused
-			}
-		})
-		window.addEventListener('keydown', function(event) {
-			var k = event.key
-			if ('12'.includes(k)) {
-				blocks = loadLevel(Number(k))
-			}
-		})
-		// control speed
-		document.querySelector('#id-input-speed').hidden = false
-		document.querySelector('#id-input-speed').addEventListener('input', function(event) {
-			var input = event.target
-			window.fps = input.value
-		})
-	}
-
 	game.update = function() {
 		if (window.paused) {
 			return
@@ -81,6 +59,47 @@ var __main = function() {
 				game.drawImage(block)
 			}
 		}
+	}
+
+	// debug mode
+	var enableDebugMode = true
+	window.paused = false
+	if (enableDebugMode) {
+		window.addEventListener('keydown', function(event) {
+			if (event.key == 'p') {
+				window.paused = !window.paused
+			}
+		})
+		window.addEventListener('keydown', function(event) {
+			var k = event.key
+			if ('12'.includes(k)) {
+				blocks = loadLevel(Number(k))
+			}
+		})
+		// control speed
+		document.querySelector('#id-input-speed').hidden = false
+		document.querySelector('#id-input-speed').addEventListener('input', function(event) {
+			var input = event.target
+			window.fps = input.value
+		})
+		// drag ball
+		var enableDrag = false
+		game.canvas.addEventListener('mousedown', function(event) {
+			var x = event.offsetX
+			var y = event.offsetY
+			if (ball.containPoint(x, y)) {
+				enableDrag = true
+			}
+		})
+		game.canvas.addEventListener('mousemove', function(event) {
+			if (enableDrag) {
+				ball.x = event.offsetX
+				ball.y = event.offsetY
+			}
+		})
+		game.canvas.addEventListener('mouseup', function(event) {
+			enableDrag = false
+		})
 	}
 }
 
