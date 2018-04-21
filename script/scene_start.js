@@ -1,4 +1,4 @@
-var SceneEnd = function(game) {
+var SceneStart = function(game) {
 	var s = {
 		game: game,
 	}
@@ -6,8 +6,8 @@ var SceneEnd = function(game) {
 	var game = s.game
 
 	s.draw = function() {
-		game.context.fillText('Game Over', 100, 100)
-		game.context.fillText('press \'R\' to replay', 100, 130)
+		game.context.fillText('This is a game (hopefully)', 100, 100)
+		game.context.fillText('press \'Q\' to start', 100, 130)
 	}
 	s.update = function() {
 
@@ -18,7 +18,7 @@ var SceneEnd = function(game) {
 		if (game.scene != s) {
 			return
 		}
-		if (event.key == 'r') {
+		if (event.key == 'q') {
 			var gameScene = Scene(game)
 			game.replaceScene(gameScene)
 		}
