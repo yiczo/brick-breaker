@@ -1,7 +1,7 @@
 var __main = function() {
 	window.enableDebugMode = true
 
-	var game = new Game()
+	var game = Game.instance()
 	var scene = new SceneStart(game)
 	game.scene = scene
 

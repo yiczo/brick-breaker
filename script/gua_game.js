@@ -41,6 +41,11 @@ class Game {
 		runloop()
 	}
 
+	static instance(...args) {
+		this.i = this.i || new this(...args)
+		return this.i
+	}
+
 	drawImage(guaImage) {
 		this.context.drawImage(guaImage.image, guaImage.x, guaImage.y)
 	}
