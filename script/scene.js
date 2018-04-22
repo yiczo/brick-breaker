@@ -12,8 +12,6 @@ var loadLevel = function(n) {
 	return blocks
 }
 
-/* exported Scene */
-
 var Scene = function(game) {
 	var s = {
 		game: game,

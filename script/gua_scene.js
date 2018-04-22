@@ -1,4 +1,3 @@
-/* exported SceneStart, SceneEnd */
 class GuaScene {
 	constructor(game) {
 		this.game = game
