@@ -1,3 +1,4 @@
+/* exported Scene */
 var loadLevel = function(n) {
 	n = n - 1
 	var level = levels[n]
