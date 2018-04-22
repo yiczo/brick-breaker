@@ -2,7 +2,7 @@ var __main = function() {
 	window.enableDebugMode = true
 
 	var game = Game()
-	var scene = SceneStart(game)
+	var scene = new SceneStart(game)
 	game.scene = scene
 
 	// debug mode

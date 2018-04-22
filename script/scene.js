@@ -63,7 +63,7 @@ var Scene = function(game) {
 
 		// handle gameover
 		if (ball.y > paddle.y) {
-			var end = SceneEnd(game)
+			var end = new SceneEnd(game)
 			game.replaceScene(end)
 			return
 		}
